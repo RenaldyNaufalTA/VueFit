@@ -14,7 +14,6 @@ This project is built with:
 - Vue 3
 - Vite
 - Tailwind CSS
-- TypeScript
 
 ## Development
 
