@@ -1,29 +1,28 @@
 # VueFit
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple workout tracker built with Vue 3 and Vite.
 
-## Recommended IDE Setup
+Features:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Create workout routines with custom exercises and sets/reps/weights
+- Track your progress and view your workout history
+- View your workout statistics and progress over time
+- Generate a workout routine based on your fitness goals and preferences
 
-## Customize configuration
+This project is built with:
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- Vue 3
+- Vite
+- Tailwind CSS
+- TypeScript
 
-## Project Setup
+## Development
 
-```sh
-npm install
-```
+To start the development server, run:
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+<div align="center">
+  <img src="https://img.shields.io/badge/Made%20with-Vue-41B883?style=for-the-badge&logo=vue.js" alt="Made with Vue" />
+  <img src="https://img.shields.io/badge/Made%20with-Vite-646CFF?style=for-the-badge&logo=vite" alt="Made with Vite" />
+  <img src="https://img.shields.io/badge/Made%20with-Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Made with Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Made%20with-TypeScript-3178C6?style=for-the-badge&logo=typescript" alt="Made with TypeScript" />
+</div>

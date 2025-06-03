@@ -1,6 +1,9 @@
 <script setup>
+import { inject } from "vue";
 import { gymHealthFacts } from "../../utils";
 import Grid from "../Grid.vue";
+const handleSelectWorkout = inject("handleSelectWorkout");
+const firstIncompleteWorkoutIndex = inject("firstIncompleteWorkoutIndex");
 const randomTip =
   gymHealthFacts[Math.floor(Math.random() * gymHealthFacts.length)];
 </script>
@@ -15,7 +18,14 @@ const randomTip =
         <div class="mt-2">
           <p class="text-lg italic">&tprime;{{ randomTip }}&tprime;</p>
         </div>
-        <button class="neo focus:neo-pressed mt-3 bg-[#2d2d2d] text-white">
+        <button
+          @click="
+            handleSelectWorkout(
+              firstIncompleteWorkoutIndex < 0 ? 0 : firstIncompleteWorkoutIndex
+            )
+          "
+          class="neo focus:neo-pressed mt-3 bg-[#2d2d2d] text-white"
+        >
           Mulai Workout &rarr;
         </button>
       </div>

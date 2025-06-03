@@ -1,10 +1,15 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, inject, ref } from "vue";
 import { workoutProgram, exerciseDescriptions } from "../../utils";
 import Grid from "../Grid.vue";
 import Portal from "../Portal.vue";
-const selectedWorkout = 4;
-const { workout, warmup } = workoutProgram[selectedWorkout];
+
+const data = inject("workoutData");
+const selectedWorkout = inject("selectedWorkout");
+const workoutTypes = inject("workoutTypes");
+const isWorkoutComplete = inject("isWorkoutComplete");
+const handleSaveWorkout = inject("handleSaveWorkout");
+const { workout, warmup } = workoutProgram[selectedWorkout.value];
 let selectedExercise = ref(null);
 
 const exerciseDescription = computed(
@@ -52,8 +57,8 @@ function closeExerciseDescription() {
             alt="fitness-watch"
           />
         </div>
-        <h3 class="text-2xl font-bold text-start">
-          {{ workout[selectedWorkout % workout.length].name }}
+        <h3 class="text-2xl font-bold text-start mt-2">
+          {{ workoutTypes[selectedWorkout % workoutTypes.length] }} Workout
         </h3>
       </div>
       <div class="workout-grid mt-8">
@@ -109,6 +114,7 @@ function closeExerciseDescription() {
             <h6>{{ w.sets }}</h6>
             <h6>{{ w.reps }}</h6>
             <input
+              v-model="data[selectedWorkout][w.name]"
               type="text"
               placeholder="14kg"
               class="neo focus:neo-pressed bg-white focus:outline-none col-start-6 col-span-2"
@@ -117,12 +123,22 @@ function closeExerciseDescription() {
         </div>
 
         <!-- Button -->
-        <div class="flex justify-start gap-2 my-4">
-          <button class="neo focus:neo-pressed bg-primary text-white mr-2">
-            Save & Exit
+        <div class="flex justify-start gap-2 mt-2">
+          <button
+            @click="handleSaveWorkout"
+            class="neo focus:neo-pressed bg-primary text-white mr-2"
+          >
+            Simpan & Keluar
           </button>
-          <button class="neo focus:neo-pressed bg-primary text-white">
-            Complete
+          <button
+            :disabled="!isWorkoutComplete"
+            :class="{
+              'neo opacity-50 cursor-not-allowed': !isWorkoutComplete,
+              'neo focus:neo-pressed bg-primary text-white': isWorkoutComplete,
+            }"
+            @click="handleSaveWorkout"
+          >
+            Selesai
           </button>
         </div>
       </div>

@@ -4,35 +4,53 @@
     <div
       class="z-20 flex md:flex-row flex-col items-center justify-center gap-4 md:m-10"
     >
-      <div class="bg-[#F8F8F9] md:w-1/2 w-10/12 p-6 rounded-lg shadow-2xl">
-        <h2 class="text-2xl font-bold uppercase">
-          Selesaikan program ini <br />
-          jika Anda ingin....
+      <div
+        class="relative z-10 flex flex-col items-center justify-center bg-[#F8F8F9] shadow-lg md:w-1/2 w-10/12 p-8 rounded-lg shadow-3xl"
+      >
+        <h2 class="text-3xl font-extrabold uppercase text-center">
+          <span class="text-[#ff9900] animate-pulse">Siapkan Diri</span>
+          untuk perubahan signifikan dalam
+          <span class="text-[#ff9900]">12 minggu</span>.
         </h2>
-        <div class="mt-2">
-          <p>✅ Ikuti program yang sederhana dengan hasil yang terbukti.</p>
-          <p>✅ Dapatkan rencana latihan lengkap untuk 12 minggu.</p>
-          <p>✅ Dapatkan tubuh yang sehat, kuat, dan sangat bugar.</p>
-          <p>✅ Pelajari lebih lanjut tentang gym, pelatihan, dan teknik.</p>
+        <div class="mt-4 text-center">
+          <p class="text-lg italic">
+            Dengan mengikuti rencana latihan yang sederhana namun efektif ini,
+            Anda akan dapat:
+          </p>
+          <ul class="list-disc space-y-1 mt-3 text-left">
+            <li class="flex items-center">✅ Meningkatkan kebugaran tubuh</li>
+            <li class="flex items-center">✅ Meningkatkan kemampuan Anda</li>
+            <li class="flex items-center">✅ Meningkatkan masa otot</li>
+            <li class="flex items-center">✅ Meningkatkan kepercayaan diri</li>
+          </ul>
         </div>
-        <div class="mt-2">
+        <div class="mt-4 text-center">
           <h3 class="text-lg font-bold">Rencana Latihan</h3>
-          <p>
-            Rencana latihan ini mengikuti struktur yang dikenal <br />
-            sebagai
-            <strong>Bro split</strong>
+          <p class="text-base">
+            Rencana latihan ini mengikuti struktur yang dikenal sebagai
+            <strong class="text-[#ff9900] underline">Bro split</strong>
           </p>
           <h5 class="text-base font-semibold mt-2">
-            <i>Dorong &rarr; Tarik &rarr; Kaki &rarr; Ulangi</i>
+            <i class="text-[#ff9900]"
+              >Push &rarr; Pull &rarr; Legs &rarr; Repeat</i
+            >
           </h5>
         </div>
       </div>
-      <div class="bg-[#F8F8F9] p-4 md:w-1/2 w-10/12 shadow-2xl rounded-lg">
-        <h3 class="text-base font-bold">🔥 Tantangan Anda</h3>
+      <div
+        class="bg-[#F8F8F9] shadow-lg md:w-1/2 w-10/12 p-8 rounded-lg shadow-3xl"
+      >
+        <h3 class="text-lg font-bold text-[#ff9900] animate-pulse">
+          🔥 Tantangan Anda
+        </h3>
         <p>Selesaikan semua latihan dan lacak kemajuan Anda sepanjang jalan!</p>
-        <p>Apakah Anda menerima?</p>
-        <button class="neo focus:neo-pressed mt-3 bg-[#2d2d2d] text-white">
-          Lanjut &rarr;
+        <p class="mb-3">Apakah Anda menerima?</p>
+        <button>
+          <router-link
+            to="/dashboard"
+            class="neo focus:neo-pressed mt-3 bg-[#2d2d2d] text-white"
+            >Lanjut &rarr;</router-link
+          >
         </button>
       </div>
     </div>
