@@ -2,15 +2,18 @@
 @import "tailwindcss";
 @layer utilities {
   .neo {
-    @apply cursor-pointer px-2.5 py-1.5 mb-[3px] mr-[3px] border-[1px] border-black shadow shadow-[#cdcdcd] rounded;
+    @apply cursor-pointer px-2.5 py-1.5 mb-[3px] mr-[3px] border-[1px] border-black shadow shadow-[#969696] rounded duration-75;
   }
   /* Tailwind 4 use .focus\:neo-pressed:hover*/
   .focus\:neo-pressed:focus {
     @apply translate-x-[2.5px] translate-y-[2.5px] duration-75 shadow-active;
   }
-  /* .bg-main {
-    @apply;
-  } */
+  .btn-info {
+    @apply bg-white ring-1 ring-black text-black rounded-full px-2 py-1 text-[8px] font-semibold uppercase tracking-wider;
+  }
+  .hover\:btn-info:hover {
+    @apply hover:bg-primary hover:text-white hover:ring-1 hover:ring-white;
+  }
 }
 
 body {

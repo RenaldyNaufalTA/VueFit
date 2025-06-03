@@ -13,7 +13,7 @@ const showMobileMenu = ref(false);
           <button
             type="button"
             @click="showMobileMenu = !showMobileMenu"
-            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-none focus:ring-inset"
+            class="relative inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-inset"
             aria-controls="mobile-menu"
             :aria-expanded="showMobileMenu.toString()"
           >
@@ -76,16 +76,6 @@ const showMobileMenu = ref(false);
                 >Home
               </router-link>
               <router-link
-                to="/workout"
-                :class="
-                  $route.name === 'Workout'
-                    ? 'bg-black/70 text-white'
-                    : 'bg-transparent '
-                "
-                class="rounded-md px-3 py-2 text-sm font-medium hover:bg-black/60 hover:text-white"
-                >Workout</router-link
-              >
-              <router-link
                 to="/dashboard"
                 :class="
                   $route.name === 'Dashboard'
@@ -93,8 +83,18 @@ const showMobileMenu = ref(false);
                     : 'bg-transparent '
                 "
                 class="rounded-md px-3 py-2 text-sm font-medium hover:bg-black/60 hover:text-white"
-                >Dashboard</router-link
-              >
+                >Dashboard
+              </router-link>
+              <router-link
+                to="/workout"
+                :class="
+                  $route.name === 'Workout'
+                    ? 'bg-black/70 text-white'
+                    : 'bg-transparent '
+                "
+                class="rounded-md px-3 py-2 text-sm font-medium hover:bg-black/60 hover:text-white"
+                >Workout
+              </router-link>
             </div>
           </div>
         </div>
@@ -138,30 +138,31 @@ const showMobileMenu = ref(false);
             :class="
               $route.name === 'Welcome'
                 ? 'bg-black/70 text-white'
-                : 'bg-transparent text-gray-300'
+                : 'bg-transparent'
             "
             class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium hover:bg-black/60 hover:text-white"
             >Home
+          </router-link>
+
+          <router-link
+            to="/dashboard"
+            :class="
+              $route.name === 'Dashboard'
+                ? 'bg-black/70 text-white'
+                : 'bg-transparent'
+            "
+            class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium hover:bg-black/60 hover:text-white"
+            >Dashboard
           </router-link>
           <router-link
             to="/workout"
             :class="
               $route.name === 'Workout'
                 ? 'bg-black/70 text-white'
-                : 'bg-transparent text-gray-300'
+                : 'bg-transparent'
             "
             class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium hover:bg-black/60 hover:text-white"
             >Workout
-          </router-link>
-          <router-link
-            to="/dashboard"
-            :class="
-              $route.name === 'Dashboard'
-                ? 'bg-black/70 text-white'
-                : 'bg-transparent text-gray-300'
-            "
-            class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium hover:bg-black/60 hover:text-white"
-            >Dashboard
           </router-link>
         </div>
       </div>

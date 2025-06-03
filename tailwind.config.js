@@ -16,6 +16,14 @@ export default {
         DEFAULT: "#000",
         "light-gray": "rgb(156 ,163, 175, 1)",
       },
+      ringColor: {
+        DEFAULT: "#000",
+        primary: "#2d2d2d",
+      },
+      backgroundColor: {
+        primary: "#2d2d2d",
+      },
+      display: ["group-hover"],
     },
   },
   plugins: [],

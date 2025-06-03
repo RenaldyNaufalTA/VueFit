@@ -1,75 +1,145 @@
 <script setup>
-import { workoutProgram } from "../../utils";
+import { computed, ref } from "vue";
+import { workoutProgram, exerciseDescriptions } from "../../utils";
 import Grid from "../Grid.vue";
+import Portal from "../Portal.vue";
 const selectedWorkout = 4;
 const { workout, warmup } = workoutProgram[selectedWorkout];
-// console.log(workout, warmup);
+let selectedExercise = ref(null);
+
+const exerciseDescription = computed(
+  () => exerciseDescriptions[selectedExercise.value]
+);
+function closeExerciseDescription() {
+  selectedExercise.value = null;
+}
 </script>
 <template>
-  <section id="dashboard" class="flex flex-col items-center justify-center">
+  <Portal
+    v-if="selectedExercise"
+    :close="closeExerciseDescription"
+    :title="selectedExercise"
+    :description="exerciseDescription"
+  />
+  <section id="workout" class="flex flex-col items-center justify-center">
     <div class="w-3/4 gap-4 mt-10">
       <div class="bg-[#F8F8F9] w-full p-6 rounded-lg shadow-2xl">
-        <h2 class="text-lg font-bold">
-          Day
-          {{
-            selectedWorkout < 9
-              ? "0" + (selectedWorkout + 1)
-              : selectedWorkout + 1
-          }}
-        </h2>
-        icon
-        <h3>Type</h3>
+        <div class="flex flex-row items-center justify-between">
+          <h4 class="mb-2">
+            Day
+            {{
+              selectedWorkout < 9
+                ? "0" + (selectedWorkout + 1)
+                : selectedWorkout + 1
+            }}
+          </h4>
+          <img
+            v-if="selectedWorkout % 3 === 0"
+            class="w-5 h-5"
+            src="../../assets/icons/weights-fitness.svg"
+            alt="weights-fitness"
+          />
+          <img
+            v-else-if="selectedWorkout % 3 === 1"
+            class="w-6 h-6"
+            src="../../assets/icons/fitness-weight-heavy.svg"
+            alt="fitness-weight-heavy"
+          />
+          <img
+            v-else-if="selectedWorkout % 3 === 2"
+            class="w-6 h-6"
+            src="../../assets/icons/fitness-watch.svg"
+            alt="fitness-watch"
+          />
+        </div>
+        <h3 class="text-2xl font-bold text-start">
+          {{ workout[selectedWorkout % workout.length].name }}
+        </h3>
       </div>
-      <div class="workout-grid grid grid-cols-2">
-        <div class="workout-item">
-          <h4 class="font-bold">Warmup</h4>
-          <p>Sets</p>
-          <p>Reps</p>
-          <p>Weight</p>
-          <div class="workout-grid" v-for="(w, wIdx) in warmup" :key="wIdx">
-            <div class="workout-grid flex gap-2">
-              <p>{{ w.name }}</p>
+      <div class="workout-grid mt-8">
+        <!-- Warmup -->
+        <div class="workout-item grid grid-cols-7 gap-4">
+          <h4 class="col-start-1 col-end-4">Warmup</h4>
+          <h4>Sets</h4>
+          <h4>Reps</h4>
+          <h4>Weight</h4>
+          <template v-for="(w, wIdx) in warmup" :key="wIdx">
+            <div
+              class="workout-grid flex justify-start items-center gap-2 col-start-1 col-end-4 group"
+            >
+              <h6>{{ w.name }}</h6>
               <button
-                class="bg-yellow-50 text-yellow-800 ring-1 ring-yellow-600/20 rounded-full px-2 py-1 text-xs"
+                @click="() => (selectedExercise = w.name)"
+                class="invisible group-hover:visible btn-info hover:btn-info"
               >
                 ?
               </button>
             </div>
-            <p>{{ w.sets }}</p>
-            <p>{{ w.reps }}</p>
-            <input type="text" placeholder="14kg" class="input-weight" />
-          </div>
+            <h6>{{ w.sets }}</h6>
+            <h6>{{ w.reps }}</h6>
+            <input
+              type="text"
+              placeholder="14kg"
+              class="neo focus:neo-pressed bg-white focus:outline-none col-start-6 col-span-2"
+            />
+          </template>
         </div>
-        <div class="workout-item">
-          <h4 class="font-bold">Workout</h4>
-          <p>Sets</p>
-          <p>Reps</p>
-          <p>Weight</p>
-          <div class="workout-grid" v-for="(w, wIdx) in workout" :key="wIdx">
-            <div class="workout-grid flex gap-2">
-              <p>{{ w.name }}</p>
+        <!-- End Warmup -->
+
+        <hr class="border-1 my-4" />
+
+        <!-- Workout -->
+        <div class="workout-item grid grid-cols-7 gap-4 mt-5">
+          <h4 class="col-start-1 col-end-4">Workout</h4>
+          <h4>Sets</h4>
+          <h4>Reps</h4>
+          <h4>Weight</h4>
+          <template v-for="(w, wIdx) in workout" :key="wIdx">
+            <div
+              class="workout-grid flex justify-start items-center gap-2 col-start-1 col-end-4 group"
+            >
+              <h6>{{ w.name }}</h6>
               <button
-                class="bg-yellow-50 text-yellow-800 ring-1 ring-yellow-600/20 rounded-full px-2 py-1 text-xs"
+                @click="() => (selectedExercise = w.name)"
+                class="invisible group-hover:visible btn-info hover:btn-info"
               >
                 ?
               </button>
             </div>
-            <p>{{ w.sets }}</p>
-            <p>{{ w.reps }}</p>
-            <input type="text" placeholder="14kg" class="input-weight" />
-          </div>
+            <h6>{{ w.sets }}</h6>
+            <h6>{{ w.reps }}</h6>
+            <input
+              type="text"
+              placeholder="14kg"
+              class="neo focus:neo-pressed bg-white focus:outline-none col-start-6 col-span-2"
+            />
+          </template>
         </div>
-        <div class="">
-          <button class="neo focus:neo-pressed mt-3 bg-[#2d2d2d] text-white">
+
+        <!-- Button -->
+        <div class="flex justify-start gap-2 my-4">
+          <button class="neo focus:neo-pressed bg-primary text-white mr-2">
             Save & Exit
           </button>
-          <button class="neo focus:neo-pressed mt-3 bg-[#2d2d2d] text-white">
+          <button class="neo focus:neo-pressed bg-primary text-white">
             Complete
           </button>
         </div>
       </div>
     </div>
-    <Grid />
+    <!-- <Grid /> -->
   </section>
 </template>
-<style scoped></style>
+<style scoped>
+h4 {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+}
+h6 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+}
+</style>

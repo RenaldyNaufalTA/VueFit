@@ -2,9 +2,9 @@
 <template>
   <section id="welcome" class="flex flex-col items-center justify-center">
     <div
-      class="z-20 flex md:flex-row flex-col items-center justify-center gap-4 mt-10"
+      class="z-20 flex md:flex-row flex-col items-center justify-center gap-4 md:m-10"
     >
-      <div class="bg-[#F8F8F9] md:w-1/2 w-full p-6 rounded-lg shadow-2xl">
+      <div class="bg-[#F8F8F9] md:w-1/2 w-10/12 p-6 rounded-lg shadow-2xl">
         <h2 class="text-2xl font-bold uppercase">
           Selesaikan program ini <br />
           jika Anda ingin....
@@ -27,7 +27,7 @@
           </h5>
         </div>
       </div>
-      <div class="bg-[#F8F8F9] p-4 md:w-1/2 w-3/4 shadow-2xl rounded-lg">
+      <div class="bg-[#F8F8F9] p-4 md:w-1/2 w-10/12 shadow-2xl rounded-lg">
         <h3 class="text-base font-bold">🔥 Tantangan Anda</h3>
         <p>Selesaikan semua latihan dan lacak kemajuan Anda sepanjang jalan!</p>
         <p>Apakah Anda menerima?</p>
