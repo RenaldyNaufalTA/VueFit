@@ -11,13 +11,15 @@ const isWorkoutComplete = inject("isWorkoutComplete");
 const handleSaveWorkout = inject("handleSaveWorkout");
 const { workout, warmup } = workoutProgram[selectedWorkout.value];
 let selectedExercise = ref(null);
-
+console.log(workout, warmup);
 const exerciseDescription = computed(
   () => exerciseDescriptions[selectedExercise.value]
 );
 function closeExerciseDescription() {
   selectedExercise.value = null;
 }
+
+const randNumb = Math.floor(Math.random() * (100 - 20 + 1) + 20);
 </script>
 <template>
   <Portal
@@ -84,7 +86,7 @@ function closeExerciseDescription() {
             <h6>{{ w.reps }}</h6>
             <input
               type="text"
-              placeholder="14kg"
+              :placeholder="Math.floor(Math.random() * w.name.length) + 'kg'"
               class="neo focus:neo-pressed bg-white focus:outline-none col-start-6 col-span-2"
             />
           </template>
@@ -116,7 +118,7 @@ function closeExerciseDescription() {
             <input
               v-model="data[selectedWorkout][w.name]"
               type="text"
-              placeholder="14kg"
+              :placeholder="Math.floor(Math.random() * w.name.length) + 'kg'"
               class="neo focus:neo-pressed bg-white focus:outline-none col-start-6 col-span-2"
             />
           </template>

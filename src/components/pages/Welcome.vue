@@ -45,13 +45,11 @@
         </h3>
         <p>Selesaikan semua latihan dan lacak kemajuan Anda sepanjang jalan!</p>
         <p class="mb-3">Apakah Anda menerima?</p>
-        <button>
-          <router-link
-            to="/dashboard"
-            class="neo focus:neo-pressed mt-3 bg-[#2d2d2d] text-white"
-            >Lanjut &rarr;</router-link
-          >
-        </button>
+        <router-link to="/dashboard">
+          <button class="neo focus:neo-pressed mt-3 bg-[#2d2d2d] text-white">
+            Lanjut &rarr;
+          </button>
+        </router-link>
       </div>
     </div>
   </section>
